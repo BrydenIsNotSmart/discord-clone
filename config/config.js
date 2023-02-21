@@ -1,6 +1,6 @@
 const config = {};
 
-config.port = process.env.PORT || 5000;
-config.dbURL = process.env.DATABASEURL || "mongodb://localhost/minicord";
+config.port = process.env.PORT || 3000;
+config.dbURL = ""; //DiscordClone
 
 module.exports = config;
