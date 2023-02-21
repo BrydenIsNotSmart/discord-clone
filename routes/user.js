@@ -6,7 +6,7 @@ const Message     = require("../models/message");
 const middleware  = require("../middleware/index");
 
 
-const     router = express.Router();
+const router = express.Router();
 
 router.get("/login", (req, res)=>{
     res.render("login", { title: "Login" });
