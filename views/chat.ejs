@@ -21,7 +21,7 @@
         </div>
         <div id="chat" class="page">
             <div class="page-header clearfix">
-                <span><%= channel.channel_name %></span>
+                <span># <%= channel.channel_name %></span>
                 <ul>
                     <!-- <li><a title="Online" href="#">Online - 1</a></li> -->
                 </ul>
@@ -42,7 +42,7 @@
             </div>
             <div class="chat-footer relative">
                 <form id="message-form" action="">
-                    <input name="message" type="text" class="post-input" placeholder="Your Text..." />
+                    <input name="message" type="text" class="post-input" placeholder="Message #<%= channel.channel_name %>" />
                     <button type="submit" class="post-button"><span class="caret-right"></span></button>
                 </form>
             </div>

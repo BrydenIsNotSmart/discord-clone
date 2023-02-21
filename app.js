@@ -1,4 +1,5 @@
 const expressSession = require("express-session");
+const MongoStore = require('connect-mongo')(expressSession)
 const methodOverride = require("method-override");
 const http           = require("http");
 const socketIO       = require("socket.io");
@@ -32,7 +33,10 @@ mongoose.Promise = global.Promise;
 
 
 // boot if db is available
-mongoose.connect(config.dbURL, { reconnectTries: 5, useNewUrlParser: true })
+mongoose.set('strictQuery', false);
+mongoose.connect(config.dbURL, { 
+    useNewUrlParser: true, 
+    useUnifiedTopology: true })
     .then(()=>{
         // boot
         server.listen(config.port, ()=>{
@@ -51,6 +55,7 @@ app.use((expressSession)({
     secret: "a4fw8542071f-c33873-443447-8ee2321",
     resave: false,
     saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
 }));
 
 
