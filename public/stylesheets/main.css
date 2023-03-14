@@ -44,6 +44,35 @@ body {
     height: 100%;
     border-radius: 50%;
   }
+  .card {
+    width: 350px;
+    height: 375px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: #061A33;
+    transition: 0.3s;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    margin-top: 15px;
+    margin-left: 15px;
+  }
+
+  .card_icon {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    padding: 6px;
+  }
+  
+  /* On mouse-over, add a deeper shadow */
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  .card_container {
+    padding: 2px 16px;
+  }
 #bg {
   position: fixed;
   top: 0;

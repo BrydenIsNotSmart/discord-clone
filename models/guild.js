@@ -29,6 +29,10 @@ const channelSchema = new mongoose.Schema({
         type: String,
         default: "/img/placeholder.png",
     },
+    public: {
+        type: Boolean,
+        default: false
+    }
 });
 
 module.exports = mongoose.model("Guild", channelSchema);

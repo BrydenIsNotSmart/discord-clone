@@ -26,7 +26,7 @@ middleware.isChannelParticipant = (req, res, next)=>{
                 return next();
             }
         }
-        res.redirect("/guild/join/" + rGuild._id);
+        res.redirect("/guild/" + rGuild._id+"/join`");
     }).catch((e)=>{
         console.log(e);
         res.redirect("/");

@@ -15,10 +15,11 @@ router.get("/", (req, res)=>{
     }
 });
 
-router.get("/discover", (req, res)=>{
+router.get("/discover", async (req, res)=>{
     if(req.user){
-        User.findById(req.user._id).populate("guilds").then((rUser)=>{
-            res.render("discover", { guilds: rUser.guilds, user: rUser, title: "Discover", channel: null });
+        User.findById(req.user._id).populate("guilds").then(async (rUser)=>{
+            const displayGuilds = await Guild.find({ public: true }); 
+            res.render("discover", { guilds: rUser.guilds, displayGuilds, user: rUser, title: "Discover", channel: null });
         }).catch((e)=>{
             res.send(e.stack);
         });

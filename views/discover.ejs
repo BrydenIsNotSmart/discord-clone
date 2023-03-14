@@ -11,12 +11,28 @@
         </div>
         <div id="profile" class="page">
             <div class="page-header clearfix">
-                <span>Discover</span>
-                <!-- <ul>
-                    <li><a title="Online" href="#">Online - 1</a></li>
-                </ul> -->
+                <span><i class="fa-solid fa-compass"></i> Discover</span>
             </div>
             <div class="profile-body scroll-hijack">
+                <div style="text-align: center;margin-top: 25px;">
+                <h4>Discover Communities</h4>
+                <p>Connect with the world, one server at a time - our chat application brings people together, wherever they are.</p>
+            </div>
+            <div style="padding-left: 125px;margin-top: 150px">
+                <h5><i class="fa-regular fa-fire-flame"></i> Top Communities</h5>
+                <p>Here are just some of the communities on VitalCord.</p><br>
+
+                <% let guild = displayGuilds.sort((a,b) => b.created_at - a.created_at) %>
+                <% for(let i = 0; i < guild.length; i++){ %>
+                <div class="card">
+                    <div class="card_container">
+                        <img class="card_icon" src="<%= guild[i].guild_picture %>" alt="Avatar">
+                      <h5><b><%= guild[i].guild_name %></b></h5>
+                      <p>Really cool guild</p>
+                    </div>
+                  </div> 
+              <% } %>
+            </div>
         </div>
     </div>
 
