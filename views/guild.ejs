@@ -1,0 +1,40 @@
+<% include partials/header %>
+
+    <!-- Page Content -->
+    <% include partials/channel_section %>
+
+
+    <div id="page">
+        <div id="chat-list">
+            <a href="/guild/<%= guild._id %>/manage" class="user"><div class="avatar"><img src="<%= guild.guild_picture %>" /></div><b><%= guild.guild_name %></b></a>
+            <ul class="chat-list scroll-hijack">
+                <li><a style="color: white" class="user" href="/guild/<%= guild._id %>"><i class="fa-solid fa-house-chimney"></i> <b>Home</b></a></li>
+                <% guild.channel.forEach(function(channel){ %>
+               <li><a class="user" style="color: white" href="/guild/<%= guild._id %>/channel/<%= channel._id %>"># <%= channel.channel_name %></a></a></li>
+                <% }); %>
+                <hr>
+                    <% guild.participant.forEach(function(participant){ %>
+                        <%if(participant._id.equals(currentUser._id)){ %>
+                            <li><a class="user"><div class="avatar"><img class="little_avatar" src="<%= participant.profile_picture %>" /></div><%= participant.username %></a></li>
+                        <% }else if(participant.online === true){ %>
+                            <li><a class="user"><div class="avatar"><img class="little_avatar" src="<%= participant.profile_picture %>" /></div><%= participant.username %></a></li>
+                        <% }else{ %>
+                            <li><a><div class="avatar"><img class="little_avatar"  src="<%= participant.profile_picture %>" /></div><%= participant.username %></a></li>
+                        <% } %>
+                    <% }); %>
+            </ul>
+        </div>
+        <div id="chat" class="page">
+            <div class="page-header clearfix">
+                <span><i class="fa-solid fa-house-chimney"></i> <b>Home</b></span>
+                <ul>
+                     <li><a title="Online" href="#">Online - <%= guild.participant.length %></a></li>
+                </ul>
+            </div>
+            <div style="text-align: center;margin-top:125px;">
+            <h3><b>Welcome to <%= guild.guild_name %>!</b></h3>
+            </div>
+        </div>
+    </div>
+
+    <% include partials/footer %>

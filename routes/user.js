@@ -48,23 +48,23 @@ router.get("/logout", middleware.isLogedIn, (req, res)=>{
 
 // Users Profile
 router.get("/@me", middleware.isLogedIn, (req, res)=>{
-    User.findById(req.user._id).populate("channels").then((rUser)=>{
-        res.render("profile", { channels: rUser.channels, title: "username" });
+    User.findById(req.user._id).populate("guilds").then((rUser)=>{
+        res.render("profile", { guilds: rUser.guilds, title: "username" });
     }).catch((e)=>{
-        res.send(e);
+        res.send(e.stack);
     });
 });
 
 // external user Profile
 router.get("/:id", middleware.isLogedIn, (req, res)=>{
-    User.findById(req.user._id).populate("channels").then((currentUser)=>{
-        User.findById(req.params.id).populate("channels").then((rUser)=>{
+    User.findById(req.user._id).populate("guilds").then((currentUser)=>{
+        User.findById(req.params.id).populate("guilds").then((rUser)=>{
             if(ObjectID(req.params.id).equals(ObjectID(req.user._id))){
                 res.redirect("@me");
             }
             res.render("external_profile", {
-                 currentUserChannels: currentUser.channels,
-                 channels: rUser.channels,
+                 currentUserChannels: currentUser.guilds,
+                 guilds: rUser.guilds,
                  title: "username",
                  user: rUser,
                 });

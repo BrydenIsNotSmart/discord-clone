@@ -88,23 +88,23 @@ function escapeHTML(s, forAttribute) {
 function scrollToBottom(){
     // // Selectors
      var element = jQuery(".scroll-hijack");
-    // var messagesContainer = jQuery("#mCSB_2_container");
-    // var chatbody = jQuery("#mCSB_2");
-    // var newMessage = messagesContainer.children().last();
+     var messagesContainer = jQuery("#mCSB_2_container");
+     var chatbody = jQuery("#mCSB_2");
+     var newMessage = messagesContainer.children().last();
 
     // // // Heights
-    // var clientHeight = messagesContainer.prop("clientHeight");
-    // var scrollTop = messagesContainer.prop("scrollTop");
-    // var scrollHeight = messagesContainer.prop("scrollHeight");
-    // var newMessageHeight = newMessage.innerHeight();
-    // var lastMessageHeight = newMessage.prev().innerHeight();
+     var clientHeight = messagesContainer.prop("clientHeight");
+     var scrollTop = messagesContainer.prop("scrollTop");
+     var scrollHeight = messagesContainer.prop("scrollHeight");
+     var newMessageHeight = newMessage.innerHeight();
+     var lastMessageHeight = newMessage.prev().innerHeight();
 
-    // console.log(clientHeight, scrollTop, scrollHeight, newMessageHeight, lastMessageHeight);
+     console.log(clientHeight, scrollTop, scrollHeight, newMessageHeight, lastMessageHeight);
 
-    // if(clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeight){
-    //     console.log("scroll");
+     if(clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeight){
+         console.log("scroll");
         element.mCustomScrollbar("scrollTo","bottom");
-    // }
+     }
 
 
 }

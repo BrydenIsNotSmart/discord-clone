@@ -1,5 +1,5 @@
 const { ObjectID } = require("mongodb");
-const Channel = require("../models/channel");
+const Guild = require("../models/guild");
 
 const middleware = {};
 
@@ -17,16 +17,16 @@ middleware.isChannelParticipant = (req, res, next)=>{
     }
 
 
-    Channel.findById(ObjectID(req.params.id)).then((rChannel)=>{
-        if(!rChannel){
+    Guild.findById(ObjectID(req.params.id)).then((rGuild)=>{
+        if(!rGuild){
             return res.redirect("/");
         }
-        for(let i = 0; i < rChannel.participant.length; i++){
-            if(rChannel.participant[i].equals(ObjectID(req.user._id))){
+        for(let i = 0; i < rGuild.participant.length; i++){
+            if(rGuild.participant[i].equals(ObjectID(req.user._id))){
                 return next();
             }
         }
-        res.redirect("/channel/join/" + rChannel._id);
+        res.redirect("/guild/join/" + rGuild._id);
     }).catch((e)=>{
         console.log(e);
         res.redirect("/");

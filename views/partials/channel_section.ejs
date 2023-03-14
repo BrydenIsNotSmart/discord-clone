@@ -1,12 +1,12 @@
 <div id="sidebar">
     <ul class="sidebar-menu">
         <li><a href="/users/@me" class="current-server" data-toggle="tooltip" data-placement="right" data-title="Home"><i class="fa-solid fa-house-chimney"></i></a></li>
-        <hr>
+        <hr style="margin: 15px;">
         <li class="toggle-sidebar"><a href="#" data-toggle="sidebar"><i class="fas fa-users"></i></a></li>
-        <% channels.forEach(function(channel){ %>
-            <li><a href="/channel/<%= channel._id%>" class="current-server" data-toggle="tooltip" data-placement="right" data-title="<%= channel.channel_name %>"><img style="margin-top: -10px" src="<%= channel.channel_picture %>"></a></li>
+        <% guilds.forEach(function(guild){ %>
+            <li><a href="/guild/<%= guild._id%>" class="current-server" data-toggle="tooltip" data-placement="right" data-title="<%= guild.guild_name %>"><img style="margin-top: -10px" src="<%= guild.guild_picture %>"></a></li>
         <% }) %>
-        <li><a href="#" class="join-server" data-start="modal-custom" data-target="#create-group" data-toggle="tooltip" data-placement="right" data-title="Join a Group"><i class="fa fa-plus"></i></a></li>
+        <li><a href="#" class="join-server" data-start="modal-custom" data-target="#create-group" data-toggle="tooltip" data-placement="right" data-title="Join a Guild"><i class="fa fa-plus"></i></a></li> 
+        <li><a href="/discover" class="join-server"  data-placement="right" data-title="Discover"><i class="fa fa-compass"></i></a></li>
     </ul>
 </div>
-<style> hr{margin: 15px;}</style>

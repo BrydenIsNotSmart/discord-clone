@@ -1,17 +1,23 @@
 const mongoose = require("mongoose");
 
 const channelSchema = new mongoose.Schema({
-    message: [
+    channel: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Message",
+            ref: "Channel",
         },
     ],
     creator: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
     },
-    channel_name: {
+    participant: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+        },
+    ],
+    guild_name: {
         type: String,
         required: true,
     },
@@ -19,6 +25,10 @@ const channelSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+    guild_picture: {
+        type: String,
+        default: "/img/placeholder.png",
+    },
 });
 
-module.exports = mongoose.model("Channel", channelSchema);
+module.exports = mongoose.model("Guild", channelSchema);

@@ -36,8 +36,8 @@
                                 <p class="mb-25 clr-fade text-small">Click a group to copy the invite link to clipboard</p>
                                 <div class="groups-list scroll-hijack">
                                     <ul class="list">
-                                        <% channels.forEach(function(channel){ %>
-                                            <li><a href="/channel/<%=channel._id%>" data-invite-link="/channel/join/<%=channel._id%>"><div class="avatar"><img class="little_avatar" src="<%= channel.channel_picture %>" /></div><%=channel.channel_name%></a></li>
+                                        <% guilds.forEach(function(guild){ %>
+                                            <li><a href="/guild/<%=guild._id%>" data-invite-link="/guild/<%=guild._id%>/join"><div class="avatar"><img class="little_avatar" src="<%= guild.guild_picture %>" /></div><%=guild.guild_name%></a></li>
                                         <%});%>
                                     </ul>
                                 </div>
@@ -55,7 +55,7 @@
                                         <p type="text" id="profile_username" class="form-control"><%= user.username %></p>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-radius">Add to TFriend</button>
+                                        <button type="submit" class="btn btn-primary btn-radius">Add Friend</button>
                                     </div>
                                 </div>
                             </div>

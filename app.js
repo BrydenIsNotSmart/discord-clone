@@ -1,25 +1,27 @@
 const expressSession = require("express-session");
 const MongoStore = require('connect-mongo')(expressSession)
 const methodOverride = require("method-override");
-const http           = require("http");
-const socketIO       = require("socket.io");
-const bodyParser     = require("body-parser");
-const express        = require("express");
-const passport       = require("passport");
-const LocalStrategy  = require("passport-local");
-const mongoose       = require("mongoose");
-const flash          = require("req-flash");
-const User           = require("./models/user");
-const config         = require("./config/config");
+const http = require("http");
+const socketIO = require("socket.io");
+const bodyParser = require("body-parser");
+const express = require("express");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const mongoose = require("mongoose");
+const flash = require("req-flash");
+const User = require("./models/user");
+const config = require("./config/config");
 const passportStrategy = require("./config/passport");
-const indexRoute     = require("./routes/index");
-const userRoute      = require("./routes/user");
-const channelRoute   = require("./routes/channel");
-const ajaxRoute      = require("./routes/ajax");
+const indexRoute = require("./routes/index");
+const userRoute = require("./routes/user");
+const channelRoute = require("./routes/channel");
+const ajaxRoute = require("./routes/ajax");
+const friendsRoute = require("./routes/friends");
+const guildRoute = require("./routes/guild");
 
-const app            = express();
-const server         = http.createServer(app);
-const io             = socketIO(server);
+const app = express();
+const server = http.createServer(app);
+const io = socketIO(server);
 
 // Configure IO
 require("./io/index")(io);
@@ -100,4 +102,6 @@ app.use((req, res, next)=>{
 app.use("/", indexRoute);
 app.use("/users", userRoute);
 app.use("/channel", channelRoute);
+app.use("/friends", friendsRoute);
+app.use("/guild", guildRoute);
 app.use(ajaxRoute);

@@ -1,0 +1,23 @@
+<% include partials/header %>
+
+<% include partials/channel_section.ejs %>
+
+    <div id="page">
+        <div id="chat-list">
+            <a href="/users/@me" class="user"><div class="avatar"><img src="<%= currentUser.profile_picture %>" /></div><%= currentUser.username %></a>
+            <ul class="chat-list scroll-hijack">
+            
+            </ul>
+        </div>
+        <div id="profile" class="page">
+            <div class="page-header clearfix">
+                <span>Discover</span>
+                <!-- <ul>
+                    <li><a title="Online" href="#">Online - 1</a></li>
+                </ul> -->
+            </div>
+            <div class="profile-body scroll-hijack">
+        </div>
+    </div>
+
+<% include partials/footer %>

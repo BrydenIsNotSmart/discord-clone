@@ -1,5 +1,6 @@
 const   mongoose  = require("mongoose");
 const   validator = require("validator");
+const   Guild     = require('./guild.js');
 // const   _         = require("lodash");
 
  const userSchema = new mongoose.Schema({
@@ -23,9 +24,9 @@ const   validator = require("validator");
         minlength: 6,
         required: true,
     },
-    channels: [{
+    guilds: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Channel",
+        ref: Guild.modelName,
     }],
     profile_picture: {
         type: String,

@@ -7,14 +7,14 @@
         </div>
         <div class="invitation-info">
             <div class="col">
-                <div class="group-avatar"><img src="<%= channel.channel_picture %>" /></div>
+                <div class="group-avatar"><img src="<%= guild.guild_picture %>" /></div>
             </div>
             <div class="col">
-                <h6 class="mb-10"><%= channel.channel_name %></h6>
+                <h6 class="mb-10"><%= guild.guild_name %></h6>
                 <ul class="group-stats">
-                    <li><%= channel.participant.length %> users registered</li>
+                    <li><%= guild.participant.length %> users registered</li>
                     <% var count = 0; %>
-                    <% channel.participant.forEach(function(participant){ %>
+                    <% guild.participant.forEach(function(participant){ %>
                         <% if(participant.online === true){ %>
                             <% count++ ; %>
                         <% } %>
@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="invitation-join">
-                <form action="/channel/join/<%= channel._id %>" method="POST">
+                <form action="/guild/<%= guild._id %>/join" method="POST">
                     <button type="submit" class="btn btn-block btn-primary">Join</button>
                 </form> 
         </div>
