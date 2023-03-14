@@ -7,7 +7,7 @@
     <div id="page">
         <div id="chat-list">
             <a href="/guild/<%= guild._id %>/manage" class="user"><div class="avatar"><img src="<%= guild.guild_picture %>" /></div><b><%= guild.guild_name %></b></a>
-            <div class="chat-list scroll-hijack">
+            <div class="chat-list">
                 <li><a style="color: white" class="user" href="/guild/<%= guild._id %>"><i class="fa-solid fa-house-chimney"></i> <b>Home</b></a></li>
                 <% guild.channel.forEach(function(channel){ %>
                <li><a class="user" style="color: white" href="/guild/<%= guild._id %>/channel/<%= channel._id %>"># <%= channel.channel_name %></a></a></li>
