@@ -22,6 +22,7 @@ const  localSignupStrategy = (req, email, password, done)=>{
                         bcrypt.hash(password, salt, (errCrypt, res)=>{
                             const newUser  = {
                                 email,
+                                username: req.body.username,
                                 password: res,
                             };
                                 User.create(newUser, (rErr, rUser)=>{

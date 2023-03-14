@@ -24,13 +24,13 @@
 
                 <% let guild = displayGuilds.sort((a,b) => b.created_at - a.created_at) %>
                 <% for(let i = 0; i < guild.length; i++){ %>
-                <div class="card">
+                <a href="/guild/<%= guild[i]._id %>/join"><div class="card">
                     <div class="card_container">
                         <img class="card_icon" src="<%= guild[i].guild_picture %>" alt="Avatar">
                       <h5><b><%= guild[i].guild_name %></b></h5>
                       <p>Really cool guild</p>
                     </div>
-                  </div> 
+                  </div></a>
               <% } %>
             </div>
         </div>
