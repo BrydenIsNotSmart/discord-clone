@@ -8,7 +8,7 @@ const utils     = {};
 utils.saveMessage = function saveMessage(io, data){
     User.findById(ObjectID(data.userID)).then((rUser)=>{
         const msg = {
-            text: data.message,
+            text: data.message.replace("&#39;","'").replace("&lt;", "<").replace("&gt;", ">"),
             author: rUser,
         };
         Message.create(msg).then((rMsg)=>{
