@@ -46,7 +46,7 @@ jQuery("#message-form").on("submit", function(e){
 
 socket.on("newMessage", function(message){
 
-    const formatedTime = moment(message.created_at).format("lll");
+    const formatedTime = moment(message.created_at).startOf("minute").fromNow();
 
     const div = jQuery("<div class='chat-message'></div>");
     div.html(`
@@ -64,10 +64,12 @@ socket.on("newMessage", function(message){
     scrollToBottom();
 });
 
+socket.on('start-type', handleStartType);
+socket.on('stop-type', handleStopType);
+
 socket.on("disconnect", function(){
     console.log("Disconnected to server");
 });
-
 
 // Escape Html
 var ESC_MAP = {
@@ -127,3 +129,27 @@ function scrollToBottom(){
         });
     setTimeout(fetchOnlineUser,30000);
 }())
+
+let typingUsers = new Set()
+
+function handleStartType(name) {
+   typingUsers.add(name);
+   let displayString = '';
+   for (const user of Array.from(typingUsers)) {
+      displayString += `${user}, `;
+   }
+   displayString = displayString.substr(0, displayString.length - 2) // to remove trailing comma
+   displayString += ' is typing...'
+   $('#indicator').text(displayString);
+}
+
+function handleStopType(name) {
+   typingUsers.delete(name)
+   let displayString = ''
+   for (const user of Array.from(typingUsers)) {
+      displayString += `${user}, `;
+   }
+   displayString = displayString.substr(0, displayString.length - 2)
+   displayString += displayString.length > 0 ? ' is typing...' : '' // when string is empty, don’t add anything
+   $('#indicator').text(displayString)
+}

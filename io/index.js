@@ -11,6 +11,15 @@ module.exports = (io)=>{
             callback();
         });
 
+        socket.on('start-type', name => {
+            io.emit('start-type', name);
+         });
+         
+         socket.on('stop-type', name => {
+
+            io.emit('stop-type', name);
+         });
+
         socket.on("createdMessage", (data, callback)=>{
             saveMessage(io, data);
             callback();
